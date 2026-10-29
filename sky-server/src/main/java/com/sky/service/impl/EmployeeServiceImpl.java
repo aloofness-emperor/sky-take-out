@@ -27,7 +27,6 @@ import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
     @Autowired
     private EmployeeMapper employeeMapper;
 
@@ -105,10 +104,27 @@ public class EmployeeServiceImpl implements EmployeeService {
         PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
         //PageHelper.startPage()方法用于分页查询，它会自动将查询结果进行分页，并返回一个Page对象
         Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
-
         long total = page.getTotal();
         List<Employee> records = page.getResult();
         return new PageResult(total,records);
+    }
+
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        //update employee set status = ? where id = ?
+        //Employee employee = new Employee();
+        //employee.setStatus(status);
+        //employee.setId(id);
+        Employee employee = Employee.builder()
+                .status(status)
+                .id(id)
+                .build();
+        employeeMapper.update(employee);
     }
 
 }
