@@ -1,0 +1,4 @@
+sky:
+  alioss:
+    access-key-id: 你的AccessKeyId
+    access-key-secret: 你的AccessKeySecret
