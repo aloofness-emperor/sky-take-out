@@ -1,0 +1,15 @@
+spring:
+  config:
+    # optional: 表示本机不存在 application-local.yml 时也不会启动报错
+    import: optional:classpath:application-local.yml
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: sky_take_out
+    username: root
+    password: 123456
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    bucket-name: silversky

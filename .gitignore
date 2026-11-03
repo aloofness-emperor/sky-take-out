@@ -1,0 +1,7 @@
+**/target/
+.idea
+application-local.yml
+*.iml
+*.class
+*Test.java
+**/test/sky-server/src/main/resources/application-local.yml
