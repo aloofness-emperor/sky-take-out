@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 菜品管理
  */
@@ -41,5 +43,18 @@ public class DishController {
     public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO){
         PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 批量删除菜品
+     */
+    @DeleteMapping
+    @ApiOperation("批量删除菜品")
+    public Result delete(@RequestParam List<Long> ids){
+        //`RequestParam` 用于获取 url 中的查询参数，
+        // 这里作用就是把 url 上多个同名的 ids 参数，自动封装成一个 Long 类型的 List 集合，供批量删除使用
+        log.info("批量删除菜品：{}", ids);
+        dishService.deleteBatch(ids);
+        return Result.success();
     }
 }
