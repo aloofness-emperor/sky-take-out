@@ -2,6 +2,10 @@ spring:
   config:
     # optional: 表示本机不存在 application-local.yml 时也不会启动报错
     import: optional:classpath:application-local.yml
+  redis:
+    host: localhost
+    port: 6379
+    database: 10
 sky:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
